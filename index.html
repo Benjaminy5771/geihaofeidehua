@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>给昊霏的花</title>
+  <link href="css/index.css" rel="stylesheet">
+</head>
+<body>
+
+  <audio id="backgroundMusic" src="music/huakaiwangyou.mp3" loop></audio>
+
+  <video id="bgVideo" class="full-screen-video" src="videos/wangyoucao.mp4" 
+  preload="auto" loop></video>
+
+  <div id="message">昊霏，这是给你的花。</div>
+
+ 
+  
+  <div id="playButton">
+    <img id="goLeft" src="images/goLeft.png" alt="Left" 
+    style="width: 50px; height: 50px; display: none;" />
+
+    <img src="images/play.png" alt="Play" style="width: 50px; height: 50px;" 
+    onmouseenter="hoverVideo()" onclick="playVideo()"  onmouseleave="unhoverVideo()" />
+
+    <img id="goRight" src="images/goRight.png" alt="Right" 
+    style="width: 50px; height: 50px; display: none;" />
+
+    <div id="messageBox">花开忘忧</div>
+
+  </div>
+
+
+
+
+  <script src="playVideo.js"></script>
+</body>
+</html>
+
