@@ -9,7 +9,7 @@
 
   <audio id="backgroundMusic" src="music/huakaiwangyou.mp3" loop></audio>
 
-  <video id="bgVideo" class="full-screen-video" src="videos/wangyoucao.mp4" 
+  <video id="bgVideo" class="full-screen-video" src="videos/wangkaiwangyou(an).mp4" 
   preload="auto" loop></video>
 
   <div id="message">昊霏，这是给你的花。</div>
@@ -18,13 +18,19 @@
   
   <div id="playButton">
     <img id="goLeft" src="images/goLeft.png" alt="Left" 
-    style="width: 50px; height: 50px; display: none;" />
+    style="width: 50px; height: 50px; display: none;" 
+    onclick="switchToOriginalMedia()" onmouseenter="this.src='images/goLeft-hover.png'" 
+    onmouseleave="this.src='images/goLeft.png'"/>
 
     <img src="images/play.png" alt="Play" style="width: 50px; height: 50px;" 
     onmouseenter="hoverVideo()" onclick="playVideo()"  onmouseleave="unhoverVideo()" />
 
     <img id="goRight" src="images/goRight.png" alt="Right" 
-    style="width: 50px; height: 50px; display: none;" />
+    style="width: 50px; height: 50px; display: none;" 
+    onclick="switchToNewMedia()" onmouseenter="this.src='images/goRight-hover.png'" 
+    onmouseleave="this.src='images/goRight.png'"/>
+
+
 
     <div id="messageBox">花开忘忧</div>
 
