@@ -76,8 +76,8 @@ function playVideo() {
 
 
   // 添加新的全局变量来保存原始和新的视频及音乐源
-var originalVideoSrc = "videos/wangkaiwangyou(an).mp4";
-var newVideoSrc = "videos/hong.mp4";
+var originalVideoSrc = "videos/huangkaiwangyou(an2).mp4";
+var newVideoSrc = "videos/hong(720p).mp4";
 var originalMusicSrc = "music/huakaiwangyou.mp3";
 var newMusicSrc = "music/hong.mp3";
 function switchToNewMedia() {
