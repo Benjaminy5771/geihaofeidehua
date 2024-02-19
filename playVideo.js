@@ -80,6 +80,7 @@ function playVideo() {
 var originalVideoSrc = "videos/huangkaiwangyou(an2).mp4";
 var secondVideoSrc = "videos/hong(720p).mp4"; // 新增变量，以区分不同阶段的视频
 var newVideoSrc = "videos/haiyouwo.mp4";
+
 var originalMusicSrc = "music/huakaiwangyou.mp3";
 var secondMusicSrc = "music/hong.mp3"; // 新增音乐文件对应secondVideoSrc
 var newMusicSrc = "music/haiyouwo.mp3";
@@ -93,18 +94,27 @@ function switchToNewMedia() {
 
     setTimeout(() => {
         // 根据当前视频决定下一步动作
-        if (video.src.includes('hong(720p)')) {
+
+        if (video.src.includes('huangkaiwangyou(an2)')){
+            video.src = secondVideoSrc; 
+            music.src = secondMusicSrc;
+            updateMessageBoxContent("虹");
+        }
+        
+        else if (video.src.includes('hong(720p)')) {
             // 如果当前是hong(720p).mp4，切换至haiyouwo.mp4
             video.src = newVideoSrc;
             music.src = newMusicSrc;
             // 更新消息框为"还有我"
             updateMessageBoxContent("还有我");
-        } else {
+        } 
+    
+        
+        else if(video.src.includes('haiyouwo')) {
             // 如果当前不是hong(720p).mp4，这里可以处理其他逻辑
-            video.src = secondVideoSrc; 
-            music.src = secondMusicSrc;
-            updateMessageBoxContent("虹");
-            // 可以根据需要更新消息框或执行其他操作
+            video.src = originalVideoSrc; 
+            music.src = originalMusicSrc;
+            updateMessageBoxContent("花开忘忧");
         }
 
         video.load(); // 重新加载视频
@@ -123,9 +133,29 @@ function switchToOriginalMedia() {
     video.style.opacity = 0;
 
     setTimeout(() => {
+
+
+        if (video.src.includes('huangkaiwangyou(an2)')){
+            video.src = newVideoSrc;
+            music.src = newMusicSrc;
+            updateMessageBoxContent("还有我");
+        }
+        
+        else if (video.src.includes('hong(720p)')) {
+            video.src = originalVideoSrc; 
+            music.src = originalMusicSrc;
+            updateMessageBoxContent("花开忘忧");
+        } 
+
+        else if(video.src.includes('haiyouwo')) {
+            video.src = secondVideoSrc; 
+            music.src = secondMusicSrc;
+            updateMessageBoxContent("虹");
+        }
+
         // 切换回原始视频和音乐源
-        video.src = originalVideoSrc;
-        music.src = originalMusicSrc;
+        // video.src = originalVideoSrc;
+        //music.src = originalMusicSrc;
 
         // 重新加载并播放视频音乐
         video.load();
@@ -136,8 +166,7 @@ function switchToOriginalMedia() {
         setTimeout(() => video.style.opacity = 1, 10);
     }, 500); // 等待淡出完成
 
-    // 更新#messageBox内容为"花开忘忧"并应用淡入淡出效果
-    updateMessageBoxContent("花开忘忧");
+
 }
 
 
