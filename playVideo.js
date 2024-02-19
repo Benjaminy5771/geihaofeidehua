@@ -76,34 +76,43 @@ function playVideo() {
 
 
   // 添加新的全局变量来保存原始和新的视频及音乐源
+// 更新全局变量以包含所有媒体源
 var originalVideoSrc = "videos/huangkaiwangyou(an2).mp4";
-var newVideoSrc = "videos/hong(720p).mp4";
+var secondVideoSrc = "videos/hong(720p).mp4"; // 新增变量，以区分不同阶段的视频
+var newVideoSrc = "videos/haiyouwo.mp4";
 var originalMusicSrc = "music/huakaiwangyou.mp3";
-var newMusicSrc = "music/hong.mp3";
+var secondMusicSrc = "music/hong.mp3"; // 新增音乐文件对应secondVideoSrc
+var newMusicSrc = "music/haiyouwo.mp3";
+
+// 修改switchToNewMedia函数以适应新的逻辑
 function switchToNewMedia() {
     var video = document.getElementById('bgVideo');
     var music = document.getElementById('backgroundMusic');
 
-    // 开始淡出
-    video.style.opacity = 0;
+    video.style.opacity = 0; // 开始淡出
 
     setTimeout(() => {
-        // 切换视频和音乐源
-        video.src = newVideoSrc;
-        music.src = newMusicSrc;
+        // 根据当前视频决定下一步动作
+        if (video.src.includes('hong(720p)')) {
+            // 如果当前是hong(720p).mp4，切换至haiyouwo.mp4
+            video.src = newVideoSrc;
+            music.src = newMusicSrc;
+            // 更新消息框为"还有我"
+            updateMessageBoxContent("还有我");
+        } else {
+            // 如果当前不是hong(720p).mp4，这里可以处理其他逻辑
+            video.src = secondVideoSrc; 
+            music.src = secondMusicSrc;
+            updateMessageBoxContent("虹");
+            // 可以根据需要更新消息框或执行其他操作
+        }
 
-        // 重新加载并播放视频音乐
-        video.load();
-        video.play();
-        music.play();
+        video.load(); // 重新加载视频
+        video.play(); // 播放视频
+        music.play(); // 播放音乐
 
-
-        // 开始淡入
-        setTimeout(() => video.style.opacity = 1, 10);
+        setTimeout(() => video.style.opacity = 1, 10); // 淡入
     }, 500); // 等待淡出完成
-
-    // 更新#messageBox内容为"虹"并应用淡入淡出效果
-    updateMessageBoxContent("虹");
 }
 
 function switchToOriginalMedia() {
